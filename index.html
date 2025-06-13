@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Flores Cayendo</title>
+  <style>
+    body {
+      margin: 0;
+      background: url('fondo3.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+    }
+    .flor {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/71/Red_Hibiscus_Flower.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: caer 10s linear infinite;
+      opacity: 0.9;
+    }
+    @keyframes caer {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+<script>
+  function crearFlor() {
+    const flor = document.createElement('div');
+    flor.classList.add('flor');
+    flor.style.left = Math.random() * 100 + 'vw';
+    flor.style.animationDuration = (8 + Math.random() * 4) + 's';
+    document.body.appendChild(flor);
+    setTimeout(() => { flor.remove(); }, 12000);
+  }
+  setInterval(crearFlor, 300);
+</script>
+</body>
+</html>
