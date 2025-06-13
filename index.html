@@ -3,27 +3,30 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Flores Cayendo</title>
+  <title>Flores Locales</title>
   <style>
     body {
       margin: 0;
-      background: url('fondo3.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background: url('fondo3.jpg') no-repeat center top fixed;
+      background-size: contain;
+      background-color: #f9e7b3;
       overflow: hidden;
     }
+
     .flor {
       position: absolute;
-      width: 40px;
-      height: 40px;
-      background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/71/Red_Hibiscus_Flower.png');
+      width: 70px;
+      height: 70px;
+      background-image: url('flor.png');
       background-size: contain;
       background-repeat: no-repeat;
-      animation: caer 10s linear infinite;
-      opacity: 0.9;
+      animation: caer 7s linear forwards;
+      opacity: 0.95;
     }
+
     @keyframes caer {
       0% {
-        transform: translateY(-100px) rotate(0deg);
+        transform: translateY(-80px) rotate(0deg);
         opacity: 1;
       }
       100% {
@@ -34,16 +37,19 @@
   </style>
 </head>
 <body>
+
 <script>
   function crearFlor() {
     const flor = document.createElement('div');
     flor.classList.add('flor');
-    flor.style.left = Math.random() * 100 + 'vw';
-    flor.style.animationDuration = (8 + Math.random() * 4) + 's';
+    flor.style.left = Math.random() * window.innerWidth + 'px';
+    flor.style.animationDuration = (5 + Math.random() * 3) + 's';
     document.body.appendChild(flor);
-    setTimeout(() => { flor.remove(); }, 12000);
+    setTimeout(() => flor.remove(), 10000);
   }
-  setInterval(crearFlor, 300);
+
+  setInterval(crearFlor, 200);
 </script>
+
 </body>
 </html>
